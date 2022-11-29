@@ -1,0 +1,20 @@
+# 端口配置
+Server:
+  port: 8801
+
+# mysql
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/sso?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+
+#配置日志  log-impl:日志实现
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志的显示级别默认info(根包尽量这样写,若简写会扩大不必要的范围,多写比较麻烦)
+logging:
+  level:
+    cn.tedu.loginsso.system: trace

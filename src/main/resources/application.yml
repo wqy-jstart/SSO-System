@@ -1,0 +1,5 @@
+# 激活Profile配置(不同环境下使用不同的日志级别)
+spring:
+  profiles:
+    active: dev
+
