@@ -1,23 +1,19 @@
-package cn.tedu.loginsso.system.pojo.entity;
+package cn.tedu.loginsso.system.pojo.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 本地用户的实体类
+ * 本地用户的详情类
  */
 @Data
-public class User implements Serializable {
+public class UserStandardVO implements Serializable {
 
     /**
      * 用户id
      */
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**

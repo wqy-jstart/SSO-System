@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
  * git用户信息对应的实体类
  */
 @Data
-@AllArgsConstructor
 public class GitUser implements Serializable {
     /**
      * git用户id
