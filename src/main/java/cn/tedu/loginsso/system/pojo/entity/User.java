@@ -2,7 +2,7 @@ package cn.tedu.loginsso.system.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.AllArgsConstructor;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
  * 本地用户的实体类
  */
 @Data
+@TableName(value = "sso_user")
 public class User implements Serializable {
 
     /**

@@ -5,6 +5,7 @@ import cn.tedu.loginsso.system.mapper.UserMapper;
 import cn.tedu.loginsso.system.pojo.DTO.LoginUserDTO;
 import cn.tedu.loginsso.system.pojo.DTO.SignUserDTO;
 import cn.tedu.loginsso.system.pojo.entity.User;
+import cn.tedu.loginsso.system.pojo.vo.UserStandardVO;
 import cn.tedu.loginsso.system.service.IUserService;
 import cn.tedu.loginsso.system.web.ServiceCode;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -69,5 +70,13 @@ public class UserServiceImpl implements IUserService {
             log.debug(message);
             throw new ServiceException(ServiceCode.ERR_NOT_PASSWORD,message);
         }
+    }
+
+    @Override
+    public User selectByUsername(String username) {
+        log.debug("开始根据用户名[{}]查询本地用户信息...",username);
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("username",username);
+        return userMapper.selectOne(wrapper);
     }
 }

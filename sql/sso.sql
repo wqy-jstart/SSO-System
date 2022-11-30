@@ -3,8 +3,8 @@
 DROP DATABASE IF EXISTS sso;
 CREATE DATABASE sso;
 use sso;
-DROP TABLE IF EXISTS user;
-CREATE TABLE user
+DROP TABLE IF EXISTS sso_user;
+CREATE TABLE sso_user
 (
     id           bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
     username     varchar(50)         NOT NULL COMMENT '用户名',
@@ -14,11 +14,11 @@ CREATE TABLE user
     gmt_modified datetime    DEFAULT NULL COMMENT '数据最后修改时间',
     PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4 COMMENT ='本地用户表';
-INSERT INTO user(username, password, nickname, gmt_create, gmt_modified)
+INSERT INTO sso_user(username, password, nickname, gmt_create, gmt_modified)
 VALUES ('root', '123456', '超级管理员', '2022-11-20 19:43:53', '2022-11-20 19:43:53');
 
-DROP TABLE IF EXISTS git;
-CREATE TABLE git
+DROP TABLE IF EXISTS sso_git;
+CREATE TABLE sso_git
 (
     id           int(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
     login        varchar(25)  DEFAULT NULL COMMENT '用户名',

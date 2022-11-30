@@ -24,4 +24,6 @@ public interface IUserService {
      * @param loginUserDTO 用户登录提供的数据
      */
     void login(LoginUserDTO loginUserDTO);
+
+    User selectByUsername(String username);
 }

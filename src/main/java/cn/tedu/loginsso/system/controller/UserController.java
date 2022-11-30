@@ -2,11 +2,13 @@ package cn.tedu.loginsso.system.controller;
 
 import cn.tedu.loginsso.system.pojo.DTO.LoginUserDTO;
 import cn.tedu.loginsso.system.pojo.DTO.SignUserDTO;
+import cn.tedu.loginsso.system.pojo.entity.User;
 import cn.tedu.loginsso.system.service.IUserService;
 import cn.tedu.loginsso.system.web.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,5 +42,13 @@ public class UserController {
         log.debug("开始处理用户登录的功能!");
         userService.login(loginUserDTO);
         return JsonResult.ok();
+    }
+
+    // 根据用户名查询用户详情
+    @GetMapping("/selectByUsername")
+    public JsonResult<User> selectByUsername(String username){
+        log.debug("开始处理根据用户名查询详情...参数:{}",username);
+        User user = userService.selectByUsername(username);
+        return JsonResult.ok(user);
     }
 }
