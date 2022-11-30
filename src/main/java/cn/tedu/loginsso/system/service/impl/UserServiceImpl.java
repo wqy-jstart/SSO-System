@@ -72,6 +72,7 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    // 主页显示本地用户的信息
     @Override
     public User selectByUsername(String username) {
         log.debug("开始根据用户名[{}]查询本地用户信息...",username);

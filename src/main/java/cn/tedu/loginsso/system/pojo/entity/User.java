@@ -1,12 +1,10 @@
 package cn.tedu.loginsso.system.pojo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 本地用户的实体类
@@ -39,10 +37,12 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime gmtCreate;
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
 
     /**
      * 修改时间
      */
-    private LocalDateTime gmtModified;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date gmtModified;
 }

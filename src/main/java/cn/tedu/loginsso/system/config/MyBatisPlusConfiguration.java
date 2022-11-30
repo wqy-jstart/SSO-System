@@ -3,6 +3,7 @@ package cn.tedu.loginsso.system.config;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * MyBatis-Plus的配置类
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
+@EnableTransactionManagement // 开启自动管理事务
 @MapperScan("cn.tedu.loginsso.system.mapper")
 public class MyBatisPlusConfiguration {
 
