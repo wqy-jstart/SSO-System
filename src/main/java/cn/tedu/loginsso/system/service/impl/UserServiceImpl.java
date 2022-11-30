@@ -45,7 +45,12 @@ public class UserServiceImpl implements IUserService {
         log.debug("即将向数据库中添加此用户...");
         User user = new User();
         BeanUtils.copyProperties(signUserDTO,user);
-        userMapper.insert(user);
+        int rows = userMapper.insert(user);
+        if (rows>1){
+            String message = "绑定失败,服务器忙,请稍后再试!";
+            log.debug(message);
+            throw new ServiceException(ServiceCode.ERR_INSERT,message);
+        }
     }
 
     /**

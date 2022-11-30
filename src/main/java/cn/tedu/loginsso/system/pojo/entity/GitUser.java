@@ -1,15 +1,20 @@
 package cn.tedu.loginsso.system.pojo.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * git用户信息对应的实体类
  */
 @Data
+@TableName(value = "sso_git")
 public class GitUser implements Serializable {
     /**
      * git用户id
@@ -65,13 +70,16 @@ public class GitUser implements Serializable {
      */
     private int watched;
 
+
     /**
      * 创建时间
      */
-    private LocalDateTime gmtCreate;
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
 
     /**
      * 修改时间
      */
-    private LocalDateTime gmtModified;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date gmtModified;
 }
