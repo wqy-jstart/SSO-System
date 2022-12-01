@@ -1,6 +1,8 @@
 package cn.tedu.loginsso.system.service;
 
+import cn.tedu.loginsso.system.pojo.DTO.GitUserDTO;
 import cn.tedu.loginsso.system.pojo.entity.GitUser;
+import cn.tedu.loginsso.system.pojo.entity.UserAndGitee;
 import cn.tedu.loginsso.system.pojo.vo.GitUserStandardVO;
 
 /**
@@ -11,7 +13,7 @@ import cn.tedu.loginsso.system.pojo.vo.GitUserStandardVO;
  */
 public interface IGitService {
 
-    void insert(GitUser gitUser);
+    void insert(GitUserDTO gitUserDTO);
 
     GitUser selectByLogin(String loginName);
 }

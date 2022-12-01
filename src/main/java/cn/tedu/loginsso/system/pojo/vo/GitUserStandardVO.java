@@ -9,13 +9,12 @@ import java.io.Serializable;
  * 返回第三方gitee的用户详情信息
  */
 @Data
-@Component
 public class GitUserStandardVO implements Serializable {
 
     /**
      * git用户id
      */
-    private Integer id;
+    private Long id;
 
     /**
      * git账号名称

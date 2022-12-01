@@ -64,14 +64,14 @@ public class UserServiceImpl implements IUserService {
         wrapper.eq("username",loginUserDTO.getUsername());
         User user = userMapper.selectOne(wrapper);
         if (user==null){
-            String message = "注册失败,该用户名不存在!";
+            String message = "该用户名不存在!";
             log.debug(message);
             throw new ServiceException(ServiceCode.ERR_NOT_FOUND,message);
         }
 
         log.debug("开始验证密码是否正确...");
         if (!user.getPassword().equals(loginUserDTO.getPassword())){
-            String message = "登录失败,密码错误!";
+            String message = "密码错误!";
             log.debug(message);
             throw new ServiceException(ServiceCode.ERR_NOT_PASSWORD,message);
         }

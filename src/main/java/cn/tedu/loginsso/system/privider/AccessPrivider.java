@@ -1,7 +1,6 @@
 package cn.tedu.loginsso.system.privider;
 
 import cn.tedu.loginsso.system.accessToken.PrividerToken;
-import cn.tedu.loginsso.system.pojo.DTO.GitUserDTO;
 import cn.tedu.loginsso.system.pojo.vo.GitUserStandardVO;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;

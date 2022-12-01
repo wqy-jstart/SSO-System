@@ -1,22 +1,18 @@
 package cn.tedu.loginsso.system.pojo.DTO;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-/**
- * 向gitee传递token,并获取需要的用户信息
- *
- * @Author java@Wqy
- * @Version 0.0.1
- */
 @Data
 public class GitUserDTO implements Serializable {
+
     /**
      * git用户id
      */
-    private Integer id;
+    private Long id;
+
+    private Long userId;
 
     /**
      * git账号名称
