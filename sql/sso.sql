@@ -15,12 +15,12 @@ CREATE TABLE sso_user
     PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4 COMMENT ='本地用户表';
 INSERT INTO sso_user(username, password, nickname, gmt_create, gmt_modified)
-VALUES ('root', '123456', '超级管理员', '2022-11-20 19:43:53', '2022-11-20 19:43:53');
+VALUES ('root', '$2a$10$N.ZOn9G6/YLFixAOPMg/h.z7pCu6v2XyFDtC4q.jeeGm/TEZyj15C', '超级管理员', '2022-11-20 19:43:53', '2022-11-20 19:43:53');
 
 DROP TABLE IF EXISTS sso_git;
 CREATE TABLE sso_git
 (
-    id           int(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
+    id           bigint(20) unsigned NOT NULL COMMENT '用户id',
     login        varchar(25)  DEFAULT NULL COMMENT '用户名',
     name         varchar(50)  DEFAULT NULL COMMENT '昵称',
     email        varchar(50)  DEFAULT NULL COMMENT '电子邮箱',
@@ -32,6 +32,13 @@ CREATE TABLE sso_git
     stared       int unsigned     NOT NULL COMMENT '星选集数量',
     watched      int unsigned     NOT NULL comment '浏览量',
     gmt_create   datetime     DEFAULT NULL COMMENT '数据创建时间',
-    gmt_modified datetime     DEFAULT NULL COMMENT '数据最后修改时间',
-    PRIMARY KEY (id)
+    gmt_modified datetime     DEFAULT NULL COMMENT '数据最后修改时间'
 ) DEFAULT CHARSET = utf8mb4 COMMENT ='第三方gitee用户登录表';
+
+DROP TABLE IF EXISTS ss0_user_git;
+CREATE TABLE sso_user_git(
+                             user_id  bigint(20) unsigned NOT NULL COMMENT '本地用户id',
+                             git_id  bigint(20) unsigned NOT NULL COMMENT 'git用户id',
+                             gmt_create   datetime     DEFAULT NULL COMMENT '数据创建时间',
+                             gmt_modified datetime     DEFAULT NULL COMMENT '数据最后修改时间'
+) DEFAULT CHARSET = utf8mb4 COMMENT ='本地用户与git用户关联表';

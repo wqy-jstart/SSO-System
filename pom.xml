@@ -50,13 +50,6 @@
             <version>4.5.6</version>
         </dependency>
 
-        <!--Apache的FastJson-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.51</version>
-        </dependency>
-
         <!--okhttp-->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
