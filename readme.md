@@ -2,7 +2,7 @@
 
 #### 该项目参考Gitee官方的OAuth文档来实现授权过程
 
-![image-20221201184225945](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20221201184225945.png)
+![image-20221201184225945](image-20221201184225945.png)
 
 ### 认证流程!
 
