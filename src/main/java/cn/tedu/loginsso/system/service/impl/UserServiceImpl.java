@@ -7,6 +7,7 @@ import cn.tedu.loginsso.system.pojo.DTO.SignUserDTO;
 import cn.tedu.loginsso.system.pojo.entity.User;
 import cn.tedu.loginsso.system.security.AdminDetails;
 import cn.tedu.loginsso.system.service.IUserService;
+import cn.tedu.loginsso.system.util.BCryptEncode;
 import cn.tedu.loginsso.system.web.ServiceCode;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -74,6 +75,7 @@ public class UserServiceImpl implements IUserService {
         log.debug("即将向数据库中添加此用户...");
         User user = new User();
         BeanUtils.copyProperties(signUserDTO, user);
+        user.setPassword(BCryptEncode.encryptionPassword(signUserDTO.getPassword()));// 对密码进行BCrypt加密处理
         int rows = userMapper.insert(user);
         if (rows > 1) {
             String message = "绑定失败,服务器忙,请稍后再试!";
