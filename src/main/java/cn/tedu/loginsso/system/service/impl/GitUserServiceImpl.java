@@ -31,6 +31,10 @@ public class GitUserServiceImpl implements IGitService {
     @Autowired
     private UserAndGiteeMapper userAndGiteeMapper;
 
+    public GitUserServiceImpl(){
+        log.debug("创建业务层接口实现类对象:GitUserServiceImpl");
+    }
+
     @Override
     public void insert(GitUserDTO gitUserDTO) {
         log.debug("处理添加git用户的请求...参数:{}",gitUserDTO);

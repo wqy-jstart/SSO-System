@@ -28,6 +28,10 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    public UserController(){
+        log.debug("创建控制器类对象:UserController");
+    }
+
     // 本地用户注册的请求
     @PostMapping("/insert")
     public JsonResult<Void> insert(SignUserDTO signUserDTO){
@@ -38,10 +42,10 @@ public class UserController {
 
     // 开始处理本地用户登录的请求
     @PostMapping("/login")
-    public JsonResult<Void> login(LoginUserDTO loginUserDTO){
+    public JsonResult<String> login(LoginUserDTO loginUserDTO){
         log.debug("开始处理用户登录的功能!");
-        userService.login(loginUserDTO);
-        return JsonResult.ok();
+        String jwt = userService.login(loginUserDTO);
+        return JsonResult.ok(jwt);
     }
 
     // 根据用户名查询用户详情

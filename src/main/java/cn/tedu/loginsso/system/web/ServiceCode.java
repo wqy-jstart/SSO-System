@@ -27,6 +27,16 @@ public enum ServiceCode {
     ERR_UNAUTHORIZED(40100),
 
     /**
+     * 错误：未登录（账号被禁用）
+     */
+    ERR_UNAUTHORIZED_DISABLED(40200),
+
+    /**
+     * 错误: 无此权限
+     */
+    ERR_FORBIDDEN(40300),
+
+    /**
      * 错误: 数据不存在
      */
     ERR_NOT_FOUND(40400),
@@ -64,7 +74,22 @@ public enum ServiceCode {
     /**
      * 错误: 查询数据异常
      */
-    ERR_SELECT(50300);
+    ERR_SELECT(50300),
+
+    /**
+     * 错误: JWT签名错误
+     */
+    ERR_JWT_SIGNATURE(60000),// ctrl + shift + U(自动转大小写)
+
+    /**
+     * 错误: JWT数据格式错误
+     */
+    ERR_JWT_MALFORMED(60100),
+
+    /**
+     * 错误: JWT已过期
+     */
+    ERR_JWT_EXPIRED(60200);
 
 
     private Integer value;

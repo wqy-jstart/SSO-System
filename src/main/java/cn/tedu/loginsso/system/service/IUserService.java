@@ -4,6 +4,7 @@ import cn.tedu.loginsso.system.pojo.DTO.LoginUserDTO;
 import cn.tedu.loginsso.system.pojo.DTO.SignUserDTO;
 import cn.tedu.loginsso.system.pojo.entity.User;
 import cn.tedu.loginsso.system.pojo.vo.UserStandardVO;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 本地用户的业务层接口
@@ -11,6 +12,7 @@ import cn.tedu.loginsso.system.pojo.vo.UserStandardVO;
  * @Author java@Wqy
  * @Version 0.0.1
  */
+@Transactional
 public interface IUserService {
 
     /**
@@ -23,7 +25,7 @@ public interface IUserService {
      * 用户登录
      * @param loginUserDTO 用户登录提供的数据
      */
-    void login(LoginUserDTO loginUserDTO);
+    String login(LoginUserDTO loginUserDTO);
 
     User selectByUsername(String username);
 }

@@ -19,4 +19,6 @@ public class LoginUserDTO implements Serializable {
      */
     private String password;
 
+
+
 }

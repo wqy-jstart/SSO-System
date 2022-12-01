@@ -27,6 +27,10 @@ public class GitUserController {
     @Autowired
     private IGitService gitService;
 
+    public GitUserController(){
+        log.debug("创建控制器类对象:GitUserController");
+    }
+
     /**
      * 根据认证Token返回用户的信息
      * @param code 密码

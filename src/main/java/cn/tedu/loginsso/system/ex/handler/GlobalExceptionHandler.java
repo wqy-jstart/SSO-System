@@ -4,6 +4,11 @@ import cn.tedu.loginsso.system.ex.ServiceException;
 import cn.tedu.loginsso.system.web.JsonResult;
 import cn.tedu.loginsso.system.web.ServiceCode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -69,6 +74,50 @@ public class GlobalExceptionHandler {
             stringJoiner.add(constraintViolation.getMessage());// 将获取的信息拿到并添加到StringJoiner中
         }
         return JsonResult.fail(ServiceCode.ERR_BAD_REQUEST, stringJoiner.toString());
+    }
+
+    /**
+     * Spring Security框架----用户名或密码错误
+     *
+     * @param e AuthenticationException
+     * @return 返回失败的JsonResult
+     */
+    @ExceptionHandler({
+            InternalAuthenticationServiceException.class,// AuthenticationServiceException >>> AuthenticationException
+            BadCredentialsException.class // AuthenticationException
+    })
+    public JsonResult<Void> handleAuthenticationException(AuthenticationException e) {
+        log.debug("捕获到:AuthenticationException");
+        log.debug("异常类型:{}", e.getClass().getName());// 输出对应类型异常的完全限定名
+        log.debug("异常消息:{}", e.getMessage());// 用户名或密码错误
+        String message = "登录失败,用户名或密码错误";
+        return JsonResult.fail(ServiceCode.ERR_UNAUTHORIZED, message);
+    }
+
+    /**
+     * Spring Security框架---账号被禁用的异常
+     *
+     * @param e DisabledException
+     * @return 返回账号被禁用的异常
+     */
+    @ExceptionHandler
+    public JsonResult<Void> handleDisabledException(DisabledException e) {
+        log.debug("捕获到:DisabledException");
+        String message = "登录失败,该账号已被禁用!";
+        return JsonResult.fail(ServiceCode.ERR_UNAUTHORIZED_DISABLED, message);
+    }
+
+    /**
+     * Spring Security框架----没有权限访问----通过认证,但没权限,故由全局异常来处理
+     *
+     * @param e AccessDeniedException
+     * @return 返回因权限受限而无法访问的异常
+     */
+    @ExceptionHandler
+    public JsonResult<Void> handleAccessDeniedException(AccessDeniedException e) {
+        log.debug("捕获到:AccessDeniedException");
+        String message = "访问失败，当前登录的用户不具有此操作权限！";
+        return JsonResult.fail(ServiceCode.ERR_FORBIDDEN, message);
     }
 
     /**
