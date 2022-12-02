@@ -74,7 +74,6 @@ public class GitUserServiceImpl implements IGitService {
         log.debug("处理查询git用户的请求...参数:{}",loginName);
         QueryWrapper<GitUser> wrapper = new QueryWrapper<>();
         wrapper.eq("login",loginName);
-        GitUser gitUser = gitUserMapper.selectOne(wrapper);
-        return gitUser;
+        return gitUserMapper.selectOne(wrapper);
     }
 }
